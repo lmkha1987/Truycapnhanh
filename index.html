@@ -1,363 +1,664 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Truy cập nhanh</title>
+<title>Truy cập nhanh</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f2f5f9;
-            color: #222;
-        }
+/* ==============================
+   THIẾT LẬP CHUNG
+============================== */
 
-        /* =========================
-           KHUNG CHÍNH
-        ========================== */
+* {
+    box-sizing: border-box;
+}
 
-        .layout {
-            max-width: 1500px;
-            margin: auto;
-            padding: 15px;
+html {
+    scroll-behavior: smooth;
+}
 
-            display: grid;
-            grid-template-columns: 240px minmax(350px, 600px) 240px;
-            gap: 20px;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 
-            align-items: start;
-        }
+    background:
+        radial-gradient(circle at top left, #dff4ff, transparent 35%),
+        radial-gradient(circle at bottom right, #eee1ff, transparent 35%),
+        linear-gradient(135deg, #f5f9ff, #eef3ff);
 
-        /* =========================
-           KHU VỰC QUẢNG CÁO
-        ========================== */
+    color: #172033;
+}
 
-        .advertising {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
 
-        .ad-box {
-            width: 100%;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
+/* ==============================
+   HEADER
+============================== */
 
-            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+.header {
+    text-align: center;
+    padding: 25px 15px 15px;
+}
 
-            position: relative;
-        }
+.header .logo {
+    font-size: 50px;
+    margin-bottom: 5px;
+}
 
-        .ad-box img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
+.header h1 {
+    margin: 0;
 
-        .ad-label {
-            position: absolute;
-            top: 6px;
-            right: 6px;
+    font-size: 34px;
+    font-weight: 800;
 
-            background: rgba(0,0,0,0.55);
-            color: white;
+    background: linear-gradient(
+        90deg,
+        #0066ff,
+        #7b2cff,
+        #e52e71
+    );
 
-            padding: 3px 7px;
-            border-radius: 5px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-            font-size: 10px;
-        }
+.header p {
+    margin-top: 8px;
+    color: #68738a;
+    font-size: 15px;
+}
 
-        /* =========================
-           NỘI DUNG CHÍNH
-        ========================== */
 
-        .main {
-            background: white;
+/* ==============================
+   BỐ CỤC
+============================== */
 
-            border-radius: 16px;
+.container {
+    max-width: 1500px;
 
-            padding: 25px;
+    margin: auto;
 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-        }
+    padding: 15px;
 
-        .logo {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 5px;
-        }
+    display: grid;
 
-        h1 {
-            text-align: center;
-            color: #0756a8;
+    grid-template-columns:
+        minmax(190px, 250px)
+        minmax(360px, 600px)
+        minmax(190px, 250px);
 
-            font-size: 30px;
+    gap: 22px;
 
-            margin-bottom: 8px;
-        }
+    align-items: start;
+}
 
-        .subtitle {
-            text-align: center;
-            color: #777;
 
-            margin-bottom: 25px;
+/* ==============================
+   KHU VỰC BANNER
+============================== */
 
-            font-size: 14px;
-        }
+.ads {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-        /* =========================
-           CÁC NÚT TRUY CẬP
-        ========================== */
 
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
+/* Banner */
 
-        .quick-button {
-            display: flex;
+.banner {
+    display: block;
 
-            align-items: center;
+    position: relative;
 
-            text-decoration: none;
+    overflow: hidden;
 
-            background: #0756a8;
+    border-radius: 18px;
 
-            color: white;
+    background: white;
 
-            padding: 17px 20px;
+    box-shadow:
+        0 10px 30px rgba(30, 70, 120, 0.18);
 
-            border-radius: 10px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
 
-            font-size: 17px;
+.banner:hover {
+    transform: translateY(-5px) scale(1.01);
 
-            font-weight: bold;
+    box-shadow:
+        0 15px 35px rgba(30, 70, 120, 0.25);
+}
 
-            transition: all 0.2s ease;
+.banner img {
+    display: block;
 
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        }
+    width: 100%;
 
-        .quick-button:hover {
-            transform: translateY(-2px);
+    height: auto;
 
-            background: #063f7c;
+    object-fit: cover;
 
-            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-        }
+    transition: transform 0.5s ease;
+}
 
-        .icon {
-            font-size: 25px;
+.banner:hover img {
+    transform: scale(1.05);
+}
 
-            width: 40px;
 
-            text-align: center;
+/* Nhãn quảng cáo */
 
-            margin-right: 10px;
-        }
+.ad-label {
+    position: absolute;
 
-        /* =========================
-           FOOTER
-        ========================== */
+    top: 8px;
+    right: 8px;
 
-        footer {
-            text-align: center;
+    z-index: 2;
 
-            margin-top: 25px;
+    background: rgba(0, 0, 0, 0.58);
 
-            padding-top: 15px;
+    color: white;
 
-            border-top: 1px solid #eee;
+    padding: 5px 9px;
 
-            font-size: 12px;
+    border-radius: 20px;
 
-            color: #888;
-        }
+    font-size: 10px;
 
-        /* =========================
-           ĐIỆN THOẠI
-        ========================== */
+    letter-spacing: 0.5px;
+}
 
-        @media (max-width: 900px) {
 
-            .layout {
-                display: flex;
+/* ==============================
+   KHỐI TRUY CẬP NHANH
+============================== */
 
-                flex-direction: column;
+.quick-panel {
 
-                padding: 10px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(246,249,255,0.98)
+        );
 
-                gap: 12px;
-            }
+    border-radius: 24px;
 
-            .main {
-                width: 100%;
+    padding: 25px;
 
-                order: 2;
+    box-shadow:
+        0 15px 40px rgba(38, 72, 130, 0.18);
 
-                padding: 18px;
-            }
+    border: 1px solid rgba(255,255,255,0.8);
+}
 
-            /* Banner vẫn hiển thị */
 
-            .advertising {
-                width: 100%;
+/* Tiêu đề */
 
-                order: 1;
+.quick-title {
+    text-align: center;
 
-                flex-direction: row;
+    margin-bottom: 23px;
+}
 
-                overflow-x: auto;
+.quick-title .icon {
+    font-size: 43px;
+}
 
-                gap: 10px;
-            }
+.quick-title h2 {
+    margin: 5px 0;
 
-            .advertising .ad-box {
-                min-width: 72%;
+    font-size: 27px;
 
-                flex-shrink: 0;
-            }
+    color: #0a56c7;
+}
 
-            /* Banner thứ hai đưa xuống dưới */
+.quick-title span {
+    font-size: 13px;
 
-            .right-ad {
-                order: 3;
+    color: #7b8495;
+}
 
-                width: 100%;
-            }
 
-            .right-ad .advertising {
-                flex-direction: row;
-            }
+/* ==============================
+   CÁC NÚT
+============================== */
 
-            h1 {
-                font-size: 25px;
-            }
+.buttons {
+    display: flex;
 
-            .logo {
-                font-size: 35px;
-            }
+    flex-direction: column;
 
-            .quick-button {
-                font-size: 16px;
+    gap: 13px;
+}
 
-                padding: 15px;
-            }
-        }
 
-        /* =========================
-           ĐIỆN THOẠI NHỎ
-        ========================== */
+.quick-button {
 
-        @media (max-width: 480px) {
+    position: relative;
 
-            .layout {
-                padding: 7px;
-            }
+    display: flex;
 
-            .main {
-                padding: 15px;
-            }
+    align-items: center;
 
-            h1 {
-                font-size: 22px;
-            }
+    text-decoration: none;
 
-            .subtitle {
-                font-size: 13px;
-            }
+    color: white;
 
-            .quick-button {
-                font-size: 15px;
+    padding: 16px 18px;
 
-                padding: 14px;
-            }
+    border-radius: 14px;
 
-            .icon {
-                font-size: 22px;
+    font-size: 16px;
 
-                width: 35px;
-            }
+    font-weight: 700;
 
-            .advertising .ad-box {
-                min-width: 85%;
-            }
-        }
+    overflow: hidden;
 
-    </style>
+    box-shadow:
+        0 7px 16px rgba(0,0,0,0.14);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Hiệu ứng ánh sáng */
+
+.quick-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition: left 0.6s ease;
+}
+
+.quick-button:hover::before {
+    left: 130%;
+}
+
+.quick-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.2);
+}
+
+
+/* Màu từng nút */
+
+.button1 {
+    background: linear-gradient(135deg, #007bff, #00b7ff);
+}
+
+.button2 {
+    background: linear-gradient(135deg, #673ab7, #9c4dff);
+}
+
+.button3 {
+    background: linear-gradient(135deg, #00897b, #00bfa5);
+}
+
+.button4 {
+    background: linear-gradient(135deg, #e91e63, #ff4081);
+}
+
+.button5 {
+    background: linear-gradient(135deg, #ff6f00, #ff9800);
+}
+
+.button6 {
+    background: linear-gradient(135deg, #3949ab, #5c6bc0);
+}
+
+
+/* Icon */
+
+.button-icon {
+
+    min-width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 12px;
+
+    background: rgba(255,255,255,0.2);
+
+    border-radius: 12px;
+
+    font-size: 23px;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    color: #7a8496;
+
+    font-size: 12px;
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 1050px) {
+
+    .container {
+
+        grid-template-columns:
+            180px
+            minmax(350px, 1fr)
+            180px;
+
+        gap: 12px;
+    }
+
+}
+
+
+/* ==============================
+   ĐIỆN THOẠI
+============================== */
+
+@media (max-width: 800px) {
+
+    .header {
+        padding-top: 15px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .container {
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding: 10px;
+
+        gap: 15px;
+    }
+
+
+    /* Banner luôn hiển thị */
+
+    .ads {
+
+        width: 100%;
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        gap: 12px;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+    }
+
+    .banner {
+
+        min-width: 78%;
+
+        flex-shrink: 0;
+    }
+
+
+    /* Nội dung */
+
+    .quick-panel {
+
+        width: 100%;
+
+        padding: 18px;
+
+        order: 2;
+    }
+
+
+    /* Banner phải */
+
+    .right-ads {
+
+        order: 3;
+    }
+
+}
+
+
+/* ==============================
+   ĐIỆN THOẠI NHỎ
+============================== */
+
+@media (max-width: 480px) {
+
+    .header .logo {
+        font-size: 42px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .quick-panel {
+        padding: 15px;
+        border-radius: 18px;
+    }
+
+    .quick-title h2 {
+        font-size: 23px;
+    }
+
+    .banner {
+        min-width: 88%;
+        border-radius: 14px;
+    }
+
+    .quick-button {
+        padding: 14px;
+
+        font-size: 14px;
+    }
+
+    .button-icon {
+        min-width: 39px;
+        height: 39px;
+        font-size: 21px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-<div class="layout">
 
-    <!-- ==================================
-         BANNER QUẢNG CÁO BÊN TRÁI
-    =================================== -->
+<!-- =================================
+     TIÊU ĐỀ
+================================== -->
 
-    <aside class="advertising">
+<header class="header">
 
-        <a class="ad-box"
-           href="https://example.com"
-           target="_blank">
+    <div class="logo">
+        🔗
+    </div>
 
-            <span class="ad-label">QUẢNG CÁO</span>
+    <h1>
+        TRUY CẬP NHANH
+    </h1>
 
-            <img src="images/banner-left-1.jpg"
-                 alt="Quảng cáo">
+    <p>
+        Hệ thống liên kết dữ liệu giáo dục
+    </p>
+
+</header>
+
+
+
+<!-- =================================
+     BỐ CỤC CHÍNH
+================================== -->
+
+<div class="container">
+
+
+    <!-- =============================
+         QUẢNG CÁO BÊN TRÁI
+    ============================== -->
+
+    <aside class="ads left-ads">
+
+
+        <!-- Banner 1 -->
+
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner1.jpg"
+                alt="Quảng cáo"
+            >
+
         </a>
 
-        <a class="ad-box"
-           href="https://example.com"
-           target="_blank">
 
-            <span class="ad-label">QUẢNG CÁO</span>
+        <!-- Banner 2 -->
 
-            <img src="images/banner-left-2.jpg"
-                 alt="Quảng cáo">
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner2.jpg"
+                alt="Quảng cáo"
+            >
+
+        </a>
+
+
+        <!-- Banner 3 -->
+
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner3.jpg"
+                alt="Quảng cáo"
+            >
+
         </a>
 
     </aside>
 
 
-    <!-- ==================================
-         NỘI DUNG CHÍNH
-    =================================== -->
 
-    <main class="main">
+    <!-- =============================
+         TRUY CẬP NHANH
+    ============================== -->
 
-        <div class="logo">
-            🔗
+    <main class="quick-panel">
+
+
+        <div class="quick-title">
+
+            <div class="icon">
+                🚀
+            </div>
+
+            <h2>
+                TRUY CẬP NHANH
+            </h2>
+
+            <span>
+                Chọn nội dung bạn muốn truy cập
+            </span>
+
         </div>
-
-        <h1>
-            TRUY CẬP NHANH
-        </h1>
-
-        <p class="subtitle">
-            Hệ thống liên kết dữ liệu
-        </p>
 
 
         <div class="buttons">
 
+
             <!-- 1 -->
 
-            <a class="quick-button"
-               href="LINK_DANG_KY_DAI_BIEU"
-               target="_blank">
+            <a
+                class="quick-button button1"
+                href="LINK_DANG_KY_DAI_BIEU"
+                target="_blank"
+            >
 
-                <span class="icon">📝</span>
+                <span class="button-icon">
+                    📝
+                </span>
 
                 <span>
                     Đăng ký đại biểu
@@ -368,11 +669,15 @@
 
             <!-- 2 -->
 
-            <a class="quick-button"
-               href="LINK_TRA_CUU_THPT"
-               target="_blank">
+            <a
+                class="quick-button button2"
+                href="LINK_TRA_CUU_THPT"
+                target="_blank"
+            >
 
-                <span class="icon">🎓</span>
+                <span class="button-icon">
+                    🎓
+                </span>
 
                 <span>
                     Tra cứu kết quả tốt nghiệp THPT
@@ -383,11 +688,15 @@
 
             <!-- 3 -->
 
-            <a class="quick-button"
-               href="LINK_TAI_DS_THPT"
-               target="_blank">
+            <a
+                class="quick-button button3"
+                href="LINK_TAI_DS_THPT"
+                target="_blank"
+            >
 
-                <span class="icon">📋</span>
+                <span class="button-icon">
+                    📋
+                </span>
 
                 <span>
                     Tải danh sách tốt nghiệp THPT
@@ -398,11 +707,15 @@
 
             <!-- 4 -->
 
-            <a class="quick-button"
-               href="LINK_TRA_CUU_DH_CD"
-               target="_blank">
+            <a
+                class="quick-button button4"
+                href="LINK_TRA_CUU_DH_CD"
+                target="_blank"
+            >
 
-                <span class="icon">🎓</span>
+                <span class="button-icon">
+                    🎓
+                </span>
 
                 <span>
                     Tra cứu kết quả Đại học, Cao đẳng
@@ -413,11 +726,15 @@
 
             <!-- 5 -->
 
-            <a class="quick-button"
-               href="LINK_TAI_DS_DH_CD"
-               target="_blank">
+            <a
+                class="quick-button button5"
+                href="LINK_TAI_DS_DH_CD"
+                target="_blank"
+            >
 
-                <span class="icon">📋</span>
+                <span class="button-icon">
+                    📋
+                </span>
 
                 <span>
                     Tải danh sách Đại học, Cao đẳng
@@ -428,11 +745,15 @@
 
             <!-- 6 -->
 
-            <a class="quick-button"
-               href="LINK_DU_LIEU_DE_THI"
-               target="_blank">
+            <a
+                class="quick-button button6"
+                href="LINK_DU_LIEU_DE_THI"
+                target="_blank"
+            >
 
-                <span class="icon">📚</span>
+                <span class="button-icon">
+                    📚
+                </span>
 
                 <span>
                     Dữ liệu đề thi
@@ -440,46 +761,90 @@
 
             </a>
 
+
         </div>
 
 
-        <footer>
+        <div class="footer">
             © 2026 - Trang truy cập nhanh
-        </footer>
+        </div>
 
     </main>
 
 
-    <!-- ==================================
-         BANNER QUẢNG CÁO BÊN PHẢI
-    =================================== -->
 
-    <aside class="advertising right-ad">
+    <!-- =============================
+         QUẢNG CÁO BÊN PHẢI
+    ============================== -->
 
-        <a class="ad-box"
-           href="https://example.com"
-           target="_blank">
+    <aside class="ads right-ads">
 
-            <span class="ad-label">QUẢNG CÁO</span>
 
-            <img src="images/banner-right-1.jpg"
-                 alt="Quảng cáo">
+        <!-- Banner 4 -->
+
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner4.jpg"
+                alt="Quảng cáo"
+            >
+
         </a>
 
-        <a class="ad-box"
-           href="https://example.com"
-           target="_blank">
 
-            <span class="ad-label">QUẢNG CÁO</span>
+        <!-- Banner 5 -->
 
-            <img src="images/banner-right-2.jpg"
-                 alt="Quảng cáo">
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner5.jpg"
+                alt="Quảng cáo"
+            >
+
         </a>
+
+
+        <!-- Banner 6 -->
+
+        <a
+            class="banner"
+            href="https://example.com"
+            target="_blank"
+        >
+
+            <span class="ad-label">
+                QUẢNG CÁO
+            </span>
+
+            <img
+                src="images/banner6.jpg"
+                alt="Quảng cáo"
+            >
+
+        </a>
+
 
     </aside>
 
+
 </div>
+
 
 </body>
 </html>
-
