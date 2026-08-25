@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -559,6 +558,138 @@ body {
         font-size: 20px;
     }
 }
+   /* ==========================
+   POPUP QUẢNG CÁO
+=========================== */
+
+.ad-popup {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 9999;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.82);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.ad-popup.show {
+
+    display: flex;
+
+}
+
+
+/* Khung hình lớn */
+
+.ad-popup-content {
+
+    position: relative;
+
+    max-width: 95vw;
+
+    max-height: 95vh;
+
+    animation: zoomAd 0.25s ease;
+}
+
+
+.ad-popup-content img {
+
+    display: block;
+
+    max-width: 90vw;
+
+    max-height: 90vh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 50px rgba(0,0,0,0.5);
+
+}
+
+
+/* Nút đóng */
+
+.close-button {
+
+    position: absolute;
+
+    top: -18px;
+
+    right: -18px;
+
+    z-index: 10;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 30px;
+
+    line-height: 35px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+.close-button:hover {
+
+    background: #eeeeee;
+
+}
+
+
+/* Hiệu ứng phóng */
+
+@keyframes zoomAd {
+
+    from {
+
+        transform: scale(0.75);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+}
 
 </style>
 </head>
@@ -580,22 +711,18 @@ body {
         <aside class="ad-column">
 
 
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
+            <div class="banner" onclick="openAd('./banner1.jpg')">
 
                 <span class="ad-label">
                     QUẢNG CÁO
                 </span>
-
+            
                 <img
                     src="./banner1.jpg"
                     alt="Quảng cáo 1"
                 >
-
-            </a>
+            
+            </div>
 
 
             <a
@@ -797,22 +924,18 @@ body {
         <aside class="ad-column right-column">
 
 
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
+            <div class="banner" onclick="openAd('./banner1.jpg')">
 
                 <span class="ad-label">
                     QUẢNG CÁO
                 </span>
-
+            
                 <img
-                    src="./banner4.jpg"
-                    alt="Quảng cáo 4"
+                    src="./banner1.jpg"
+                    alt="Quảng cáo 1"
                 >
-
-            </a>
+            
+            </div>
 
 
             <a
@@ -858,7 +981,59 @@ body {
 
 </div>
 
+<!-- ==========================
+     POPUP HIỂN THỊ QUẢNG CÁO
+=========================== -->
 
+<div id="adPopup" class="ad-popup" onclick="closeAd(event)">
+
+    <div class="ad-popup-content">
+
+        <button
+            class="close-button"
+            onclick="closeAd()"
+        >
+            ×
+        </button>
+
+        <img
+            id="adLargeImage"
+            src=""
+            alt="Quảng cáo"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openAd(image) {
+
+    document.getElementById("adLargeImage").src = image;
+
+    document.getElementById("adPopup").classList.add("show");
+
+}
+
+
+function closeAd(event) {
+
+    if (
+        !event ||
+        event.target.id === "adPopup" ||
+        event.target.classList.contains("close-button")
+    ) {
+
+        document
+            .getElementById("adPopup")
+            .classList.remove("show");
+
+    }
+
+}
+
+</script>
 </body>
 </html>
-```
