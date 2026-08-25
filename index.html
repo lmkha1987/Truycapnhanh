@@ -690,7 +690,28 @@ body {
     }
 
 }
-
+/*Hiệu ứng hiển thị lượt truy cập*/
+.visit-counter {
+       margin-bottom: 8px;
+   
+       padding: 8px 15px;
+   
+       display: inline-block;
+   
+       background: rgba(255,255,255,0.75);
+   
+       border-radius: 20px;
+   
+       color: #657089;
+   
+       font-size: 13px;
+   }
+   
+   .visit-counter strong {
+       color: #006cff;
+   
+       font-size: 15px;
+   }
 </style>
 </head>
 
@@ -909,9 +930,17 @@ body {
 
 
             <div class="footer">
-                © 2026 - Trang truy cập nhanh
+            
+                <div class="visit-counter">
+                    👁️ Lượt truy cập:
+                    <strong id="visitCount">...</strong>
+                </div>
+            
+                <div>
+                    © 2026 - Trang truy cập nhanh
+                </div>
+            
             </div>
-
 
         </main>
 
@@ -1035,5 +1064,30 @@ function closeAd(event) {
 }
 
 </script>
+   '' Đếm số lượt truy cập
+   <script>
+
+      const COUNTER_URL =
+          "https://script.google.com/macros/s/AKfycbz181hwlCGnLkHzcHLWL78960QTgrCOYL0vuJpiiziB4C5_p00Z8Cnf4_Ze1Z1jDtcf/exec";
+      
+      
+      fetch(COUNTER_URL)
+          .then(response => response.json())
+          .then(data => {
+      
+              document.getElementById("visitCount")
+                  .textContent = Number(data.visits).toLocaleString("vi-VN");
+      
+          })
+          .catch(error => {
+      
+              document.getElementById("visitCount")
+                  .textContent = "...";
+      
+              console.error(error);
+      
+          });
+      
+      </script>
 </body>
 </html>
