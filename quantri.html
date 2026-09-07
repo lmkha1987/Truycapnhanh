@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Truy cập nhanh</title>
+
+<style>
+
+/* =========================
+   CÀI ĐẶT CHUNG
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(circle at 10% 20%, #dff5ff, transparent 30%),
+        radial-gradient(circle at 90% 80%, #eee5ff, transparent 30%),
+        linear-gradient(135deg, #f5faff, #eef1ff);
+
+    color: #172033;
+}
+
+
+/* =========================
+   KHUNG TOÀN BỘ WEBSITE
+========================= */
+
+.page {
+    width: 100%;
+
+    max-width: 1120px;
+
+    margin: 0 auto;
+
+    padding: 25px 15px 40px;
+}
+
+
+/* =========================
+   BỐ CỤC 3 CỘT
+========================= */
+
+.main-layout {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        190px
+        600px
+        190px;
+
+    justify-content: center;
+
+    align-items: start;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.ad-column {
+
+    width: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.banner {
+
+    display: block;
+
+    position: relative;
+
+    width: 190px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(30, 70, 120, 0.18);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.banner:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(30, 70, 120, 0.28);
+}
+
+
+/*
+   HÌNH QUẢNG CÁO
+
+   Hình được lấy trực tiếp từ thư mục
+   chứa index.html
+*/
+
+.banner img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 120px;
+
+    object-fit: cover;
+
+    background: #eeeeee;
+}
+
+
+/* Nhãn quảng cáo */
+
+.ad-label {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 7px;
+
+    right: 7px;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    background: rgba(0,0,0,0.58);
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   KHUNG TRUNG TÂM
+========================= */
+
+.content {
+
+    width: 600px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(248,250,255,0.98)
+        );
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 15px 45px rgba(40, 75, 130, 0.20);
+
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+
+/* =========================
+   TIÊU ĐỀ TRONG KHUNG
+========================= */
+
+.title {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+}
+
+
+.title-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 3px;
+}
+
+
+.title h1 {
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: 0;
+
+    color: #3159e8;
+}
+
+
+.title p {
+
+    margin: 7px 0 0;
+
+    color: #7a8497;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   NÚT LIÊN KẾT
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.quick-button {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 68px;
+
+    width: 100%;
+
+    padding: 10px 15px;
+
+    border-radius: 14px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 14px rgba(0,0,0,0.14);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.quick-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 11px 22px rgba(0,0,0,0.22);
+}
+
+
+/* Hiệu ứng ánh sáng */
+
+.quick-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition: left 0.55s ease;
+}
+
+
+.quick-button:hover::after {
+
+    left: 130%;
+}
+
+
+/* =========================
+   MÀU NÚT
+========================= */
+
+.button1 {
+    background: linear-gradient(135deg, #008cff, #00b8ff);
+}
+
+.button2 {
+    background: linear-gradient(135deg, #6636c9, #9b45ff);
+}
+
+.button3 {
+    background: linear-gradient(135deg, #009d8b, #00c5ad);
+}
+
+.button4 {
+    background: linear-gradient(135deg, #ed1f63, #ff3f86);
+}
+
+.button5 {
+    background: linear-gradient(135deg, #ff7100, #ff9f00);
+}
+
+.button6 {
+    background: linear-gradient(135deg, #4052b8, #6174d5);
+}
+
+
+/* =========================
+   ICON NÚT
+========================= */
+
+.button-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    min-width: 45px;
+
+    margin-right: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(255,255,255,0.22);
+
+    border-radius: 12px;
+
+    font-size: 23px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #8992a3;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1050px) {
+
+    .main-layout {
+
+        grid-template-columns:
+            160px
+            minmax(420px, 600px)
+            160px;
+
+        gap: 12px;
+    }
+
+    .ad-column,
+    .banner {
+
+        width: 160px;
+    }
+}
+
+
+/* =========================
+   ĐIỆN THOẠI
+========================= */
+
+@media (max-width: 800px) {
+
+    .page {
+
+        padding: 10px;
+    }
+
+
+    .main-layout {
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 13px;
+    }
+
+
+    /*
+       Banner vẫn hiển thị
+    */
+
+    .ad-column {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        gap: 10px;
+
+        padding: 3px 2px 8px;
+    }
+
+
+    .banner {
+
+        min-width: 78%;
+
+        width: 78%;
+
+        flex-shrink: 0;
+    }
+
+
+    .content {
+
+        width: 100%;
+
+        padding: 17px;
+
+        border-radius: 20px;
+    }
+
+
+    /*
+       Banner phải nằm sau nội dung
+    */
+
+    .right-column {
+
+        order: 3;
+    }
+}
+
+
+/* =========================
+   ĐIỆN THOẠI NHỎ
+========================= */
+
+@media (max-width: 480px) {
+
+    .banner {
+
+        min-width: 88%;
+
+        width: 88%;
+    }
+
+
+    .title h1 {
+
+        font-size: 23px;
+    }
+
+
+    .title-icon {
+
+        font-size: 36px;
+    }
+
+
+    .quick-button {
+
+        min-height: 62px;
+
+        font-size: 14px;
+    }
+
+
+    .button-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        min-width: 40px;
+
+        font-size: 20px;
+    }
+}
+   /* ==========================
+   POPUP QUẢNG CÁO
+=========================== */
+
+.ad-popup {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 9999;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.82);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.ad-popup.show {
+
+    display: flex;
+
+}
+
+
+/* Khung hình lớn */
+
+.ad-popup-content {
+
+    position: relative;
+
+    max-width: 95vw;
+
+    max-height: 95vh;
+
+    animation: zoomAd 0.25s ease;
+}
+
+
+.ad-popup-content img {
+
+    display: block;
+
+    max-width: 90vw;
+
+    max-height: 90vh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 50px rgba(0,0,0,0.5);
+
+}
+
+
+/* Nút đóng */
+
+.close-button {
+
+    position: absolute;
+
+    top: -18px;
+
+    right: -18px;
+
+    z-index: 10;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 30px;
+
+    line-height: 35px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+.close-button:hover {
+
+    background: #eeeeee;
+
+}
+
+
+/* Hiệu ứng phóng */
+
+@keyframes zoomAd {
+
+    from {
+
+        transform: scale(0.75);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+}
+/*Hiệu ứng hiển thị lượt truy cập*/
+.visit-counter {
+       margin-bottom: 8px;
+   
+       padding: 8px 15px;
+   
+       display: inline-block;
+   
+       background: rgba(255,255,255,0.75);
+   
+       border-radius: 20px;
+   
+       color: #657089;
+   
+       font-size: 13px;
+   }
+   
+   .visit-counter strong {
+       color: #006cff;
+   
+       font-size: 15px;
+   }
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <div class="main-layout">
+
+
+        <!-- ==================================
+             BANNER BÊN TRÁI
+        =================================== -->
+
+        <aside class="ad-column">
+
+
+            <div class="banner" onclick="openAd('./banner1.jpg')">
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+            
+                <img
+                    src="./banner1.jpg"
+                    alt="Quảng cáo 1"
+                >
+            
+            </div>
+
+
+            <a
+                class="banner"
+                href="#"
+                target="_blank"
+            >
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+
+                <img
+                    src="./banner2.jpg"
+                    alt="Quảng cáo 2"
+                >
+
+            </a>
+
+
+            <a
+                class="banner"
+                href="#"
+                target="_blank"
+            >
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+
+                <img
+                    src="./banner3.jpg"
+                    alt="Quảng cáo 3"
+                >
+
+            </a>
+
+        </aside>
+
+
+
+        <!-- ==================================
+             NỘI DUNG TRUNG TÂM
+        =================================== -->
+
+        <main class="content">
+
+
+            <div class="title">
+
+                <div class="title-icon">
+                    🚀
+                </div>
+
+                <h1>
+                    TRUY CẬP NHANH
+                </h1>
+
+                <p>
+                    Hệ thống liên kết dữ liệu giáo dục
+                </p>
+
+            </div>
+
+
+            <div class="buttons">
+
+
+                <!-- 1 -->
+
+                <a
+                    class="quick-button button1"
+                    href="https://script.google.com/macros/s/AKfycbx8q_QmVnl7sDVNY_El2fMumXhXs7EAGqD5M-zXTltmbR1vZ8h2p_TOpJDuFP949aKYcw/exec"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        📝
+                    </span>
+
+                    <span>
+                        Đăng ký đại biểu
+                    </span>
+
+                </a>
+
+
+                <!-- 2 -->
+
+                <a
+                    class="quick-button button2"
+                    href="https://script.google.com/macros/s/AKfycbzq45ByOe5LfkcKLM6QGy8Wgo5OZGr1upP2HGiEzyHw480GLDUDamADhl7PUH7R3zxq/exec?page=tracuu"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        🎓
+                    </span>
+
+                    <span>
+                        Tra cứu kết quả tốt nghiệp THPT
+                    </span>
+
+                </a>
+
+
+                <!-- 3 -->
+
+                <a
+                    class="quick-button button3"
+                    href="https://script.google.com/macros/s/AKfycbzq45ByOe5LfkcKLM6QGy8Wgo5OZGr1upP2HGiEzyHw480GLDUDamADhl7PUH7R3zxq/exec"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        📋
+                    </span>
+
+                    <span>
+                        Tải danh sách tốt nghiệp THPT
+                    </span>
+
+                </a>
+
+
+                <!-- 4 -->
+
+                <a
+                    class="quick-button button4"
+                    href="https://script.google.com/macros/s/AKfycbzjdwT5Cjf-Si05w20T7OxUMXpxXlPK6SuUMmMfRIuBXWZXk1TfwK4I5BVQzGz5aGK5Gg/exec"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        🎓
+                    </span>
+
+                    <span>
+                        Tra cứu kết quả Đại học, Cao đẳng
+                    </span>
+
+                </a>
+
+
+                <!-- 5 -->
+
+                <a
+                    class="quick-button button5"
+                    href="https://script.google.com/macros/s/AKfycbzjdwT5Cjf-Si05w20T7OxUMXpxXlPK6SuUMmMfRIuBXWZXk1TfwK4I5BVQzGz5aGK5Gg/exec?page=login"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        📋
+                    </span>
+
+                    <span>
+                        Tải danh sách Đại học, Cao đẳng
+                    </span>
+
+                </a>
+
+
+                <!-- 6 -->
+
+                <a
+                    class="quick-button button6"
+                    href="https://padlet.com/dangng1021/phong-quan-ly-chat-luong-va-cong-nghe-thong-tin-so-gd-t-tinh-7in0yy9oh3nqjh13"
+                    target="_blank"
+                >
+
+                    <span class="button-icon">
+                        📚
+                    </span>
+
+                    <span>
+                        Dữ liệu đề thi
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+            <div class="footer">
+            
+                <div class="visit-counter">
+                    👁️ Lượt truy cập:
+                    <strong id="visitCount">...</strong>
+                </div>
+            
+                <div>
+                    © 2026 - Trang truy cập nhanh by Lê Minh Kha
+                </div>
+            
+            </div>
+
+        </main>
+
+
+
+        <!-- ==================================
+             BANNER BÊN PHẢI
+        =================================== -->
+
+        <aside class="ad-column right-column">
+
+
+            <div class="banner" onclick="openAd('./banner1.jpg')">
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+            
+                <img
+                    src="./banner1.jpg"
+                    alt="Quảng cáo 1"
+                >
+            
+            </div>
+
+
+            <a
+                class="banner"
+                href="#"
+                target="_blank"
+            >
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+
+                <img
+                    src="./banner5.jpg"
+                    alt="Quảng cáo 5"
+                >
+
+            </a>
+
+
+            <a
+                class="banner"
+                href="#"
+                target="_blank"
+            >
+
+                <span class="ad-label">
+                    QUẢNG CÁO
+                </span>
+
+                <img
+                    src="./banner6.jpg"
+                    alt="Quảng cáo 6"
+                >
+
+            </a>
+
+
+        </aside>
+
+
+    </div>
+
+</div>
+
+<!-- ==========================
+     POPUP HIỂN THỊ QUẢNG CÁO
+=========================== -->
+
+<div id="adPopup" class="ad-popup" onclick="closeAd(event)">
+
+    <div class="ad-popup-content">
+
+        <button
+            class="close-button"
+            onclick="closeAd()"
+        >
+            ×
+        </button>
+
+        <img
+            id="adLargeImage"
+            src=""
+            alt="Quảng cáo"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openAd(image) {
+
+    document.getElementById("adLargeImage").src = image;
+
+    document.getElementById("adPopup").classList.add("show");
+
+}
+
+
+function closeAd(event) {
+
+    if (
+        !event ||
+        event.target.id === "adPopup" ||
+        event.target.classList.contains("close-button")
+    ) {
+
+        document
+            .getElementById("adPopup")
+            .classList.remove("show");
+
+    }
+
+}
+
+</script> 
+  <!-- ==========================
+     hiển thị lượt truy cập
+=========================== -->
+   <script>
+
+      const COUNTER_URL =
+          "https://script.google.com/macros/s/AKfycbz181hwlCGnLkHzcHLWL78960QTgrCOYL0vuJpiiziB4C5_p00Z8Cnf4_Ze1Z1jDtcf/exec";
+      
+      
+      fetch(COUNTER_URL)
+          .then(response => response.json())
+          .then(data => {
+      
+              document.getElementById("visitCount")
+                  .textContent = Number(data.visits).toLocaleString("vi-VN");
+      
+          })
+          .catch(error => {
+      
+              document.getElementById("visitCount")
+                  .textContent = "...";
+      
+              console.error(error);
+      
+          });
+      
+      </script>
+</body>
+</html>
