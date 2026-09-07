@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Trang chủ</title><style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;min-height:100%}
+body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#f5faff,#eef1ff);color:#172033}
+.page{width:100%;max-width:1120px;margin:auto;padding:25px 15px 40px}
+.main-layout{width:100%;display:grid;grid-template-columns:190px minmax(0,600px) 190px;justify-content:center;align-items:start;gap:20px}
+.ad-column{width:190px;display:flex;flex-direction:column;gap:18px}
+.banner{display:block;position:relative;width:190px;border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 8px 25px rgba(30,70,120,.18);cursor:pointer;transition:.25s}
+.banner:hover{transform:translateY(-4px)}
+.banner img{display:block;width:100%;height:auto;min-height:120px;object-fit:cover}
+.ad-label{position:absolute;z-index:2;top:7px;right:7px;padding:4px 8px;border-radius:20px;background:rgba(0,0,0,.58);color:#fff;font-size:9px;font-weight:700}
+.content{width:100%;background:rgba(255,255,255,.98);border-radius:25px;padding:28px 30px 24px;box-shadow:0 15px 45px rgba(42,65,110,.15)}
+.title{text-align:center;margin-bottom:25px}.title-icon{width:58px;height:58px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border-radius:17px;background:linear-gradient(135deg,#6d35d9,#9a3df2);font-size:29px}
+.title h1{margin:0;font-size:27px;line-height:1.25;font-weight:700;color:#3159e8}.title p{margin:8px 0 0;font-size:14px;font-weight:400;color:#657089}
+.buttons,.choice-wrap{display:flex;flex-direction:column;gap:15px}
+.quick-button,.choice{display:flex;align-items:center;gap:16px;min-height:64px;padding:10px 18px;border-radius:16px;color:#fff;text-decoration:none;font-size:16px;font-weight:700;box-shadow:0 7px 18px rgba(40,60,110,.14);transition:.2s}
+.quick-button:hover,.choice:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.button-icon,.choice-icon{width:50px;height:50px;flex:0 0 50px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,.2);font-size:24px}
+.button2,.student{background:linear-gradient(135deg,#6b32d6,#9a3df2)}.button4,.school{background:linear-gradient(135deg,#f04f7a,#ff2d78)}
+.choice{min-height:82px}.choice-icon{width:54px;height:54px;flex-basis:54px}.choice h2{margin:0;font-size:18px;font-weight:700}.choice p{margin:5px 0 0;font-size:13px;font-weight:400;opacity:.9}
+.back-home{display:block;width:max-content;margin:24px auto 0;padding:9px 22px;background:#fff;color:#3159e8;text-decoration:none;font-size:14px;font-weight:600;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.footer{margin-top:24px;text-align:center;font-size:12px;font-weight:400;color:#7a8498}.visit-counter{margin-bottom:8px;padding:8px 15px;display:inline-block;background:rgba(255,255,255,.75);border-radius:20px;color:#657089;font-size:13px}.visit-counter strong{color:#006cff;font-size:15px}
+.ad-popup{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.72);opacity:0;visibility:hidden;transition:.2s}.ad-popup.show{opacity:1;visibility:visible}
+.ad-popup-content{position:relative;max-width:92vw;max-height:92vh}.ad-popup-content img{display:block;max-width:92vw;max-height:88vh;width:auto;height:auto;border-radius:12px}.close-button{position:absolute;z-index:2;top:-15px;right:-15px;width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:#222;font-size:28px;cursor:pointer}
+@media(max-width:900px){.page{padding:15px 10px 30px}.main-layout{grid-template-columns:1fr;gap:15px}.content{grid-row:1;padding:24px 18px 22px}.ad-column{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.left-column{grid-row:2}.right-column{grid-row:3}.banner{width:100%}.banner img{min-height:80px}.title h1{font-size:24px}.quick-button{font-size:15px}}
+@media(max-width:560px){.ad-column{grid-template-columns:1fr}.banner img{min-height:120px;max-height:220px}.content{border-radius:20px}}
+</style></head><body><div class="page"><div class="main-layout">
+<aside class="ad-column left-column">
+<div class="banner" onclick="openAd('./banner1.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner1.jpg" alt="Quảng cáo 1"></div>
+<div class="banner" onclick="openAd('./banner2.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner2.jpg" alt="Quảng cáo 2"></div>
+<div class="banner" onclick="openAd('./banner3.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner3.jpg" alt="Quảng cáo 3"></div>
+</aside>
+<main class="content"><div class="title"><div class="title-icon">🏠</div><h1>TRANG CHỦ</h1><p>Vui lòng chọn đối tượng truy cập</p></div><div class="choice-wrap"><a href="./thisinh.html" class="choice student"><span class="choice-icon">🎓</span><span><h2>BẠN LÀ THÍ SINH</h2><p>Tra cứu thông tin và kết quả thi</p></span></a><a href="./quantri.html" class="choice school"><span class="choice-icon">🏫</span><span><h2>BẠN LÀ QUẢN TRỊ TRƯỜNG</h2><p>Truy cập các chức năng quản trị và dữ liệu</p></span></a></div><div class="footer"><div class="visit-counter">👁️ Lượt truy cập: <strong id="visitCount">...</strong></div><div>© 2026 - Trang truy cập nhanh by Lê Minh Kha</div></div></main>
+<aside class="ad-column right-column">
+<div class="banner" onclick="openAd('./banner1.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner1.jpg" alt="Quảng cáo 1"></div>
+<div class="banner" onclick="openAd('./banner5.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner5.jpg" alt="Quảng cáo 5"></div>
+<div class="banner" onclick="openAd('./banner6.jpg')"><span class="ad-label">QUẢNG CÁO</span><img src="./banner6.jpg" alt="Quảng cáo 6"></div>
+</aside>
+</div></div>
+<div id="adPopup" class="ad-popup" onclick="closeAd(event)"><div class="ad-popup-content"><button class="close-button" onclick="closeAd()">×</button><img id="adLargeImage" src="" alt="Quảng cáo"></div></div>
+<script>
+function openAd(image){document.getElementById("adLargeImage").src=image;document.getElementById("adPopup").classList.add("show")}
+function closeAd(event){if(!event||event.target.id==="adPopup"||event.target.classList.contains("close-button"))document.getElementById("adPopup").classList.remove("show")}
+</script>
+
+<script>
+const COUNTER_URL="https://script.google.com/macros/s/AKfycbz181hwlCGnLkHzcHLWL78960QTgrCOYL0vuJpiiziB4C5_p00Z8Cnf4_Ze1Z1jDtcf/exec";
+fetch(COUNTER_URL).then(r=>r.json()).then(d=>{let e=document.getElementById("visitCount");if(e)e.textContent=Number(d.visits).toLocaleString("vi-VN")}).catch(()=>{});
+</script>
+</body></html>
