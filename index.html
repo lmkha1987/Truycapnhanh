@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Truy cập nhanh</title>
+<title>Cổng dữ liệu giáo dục</title>
 
 <style>
-
-/* =========================
-   CÀI ĐẶT CHUNG
-========================= */
 
 * {
     box-sizing: border-box;
@@ -31,370 +27,212 @@ body {
         linear-gradient(135deg, #f5faff, #eef1ff);
 
     color: #172033;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
 }
 
-
 /* =========================
-   KHUNG TOÀN BỘ WEBSITE
+   KHUNG CHÍNH
 ========================= */
 
-.page {
+.container {
     width: 100%;
+    max-width: 900px;
 
-    max-width: 1120px;
+    padding: 30px 20px;
 
-    margin: 0 auto;
-
-    padding: 25px 15px 40px;
+    text-align: center;
 }
 
-
 /* =========================
-   BỐ CỤC 3 CỘT
+   BIỂU TƯỢNG
 ========================= */
 
-.main-layout {
+.logo {
+    font-size: 65px;
+    margin-bottom: 8px;
+}
 
-    width: 100%;
+/* =========================
+   TIÊU ĐỀ
+========================= */
+
+h1 {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    color: #3159e8;
+}
+
+.subtitle {
+    margin-top: 10px;
+    margin-bottom: 35px;
+
+    color: #68738a;
+
+    font-size: 16px;
+}
+
+/* =========================
+   2 LỰA CHỌN
+========================= */
+
+.choice-container {
 
     display: grid;
 
-    grid-template-columns:
-        190px
-        600px
-        190px;
+    grid-template-columns: 1fr 1fr;
 
-    justify-content: center;
-
-    align-items: start;
-
-    gap: 20px;
+    gap: 25px;
 }
 
-
 /* =========================
-   BANNER
+   Ô LỰA CHỌN
 ========================= */
 
-.ad-column {
+.choice {
 
-    width: 190px;
+    position: relative;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 18px;
-}
+    align-items: center;
 
+    justify-content: center;
 
-.banner {
+    min-height: 300px;
 
-    display: block;
+    padding: 30px;
 
-    position: relative;
+    border-radius: 25px;
 
-    width: 190px;
+    text-decoration: none;
 
-    border-radius: 15px;
+    color: white;
 
     overflow: hidden;
 
-    background: #ffffff;
-
     box-shadow:
-        0 8px 25px rgba(30, 70, 120, 0.18);
-
-    text-decoration: none;
+        0 15px 40px rgba(40,70,130,0.20);
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
 
+.choice:hover {
 
-.banner:hover {
-
-    transform: translateY(-4px);
+    transform: translateY(-7px);
 
     box-shadow:
-        0 14px 30px rgba(30, 70, 120, 0.28);
+        0 22px 45px rgba(40,70,130,0.28);
 }
-
-
-/*
-   HÌNH QUẢNG CÁO
-
-   Hình được lấy trực tiếp từ thư mục
-   chứa index.html
-*/
-
-.banner img {
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    min-height: 120px;
-
-    object-fit: cover;
-
-    background: #eeeeee;
-}
-
-
-/* Nhãn quảng cáo */
-
-.ad-label {
-
-    position: absolute;
-
-    z-index: 5;
-
-    top: 7px;
-
-    right: 7px;
-
-    padding: 4px 8px;
-
-    border-radius: 20px;
-
-    background: rgba(0,0,0,0.58);
-
-    color: white;
-
-    font-size: 9px;
-
-    font-weight: bold;
-}
-
 
 /* =========================
-   KHUNG TRUNG TÂM
+   MÀU THÍ SINH
 ========================= */
 
-.content {
-
-    width: 600px;
+.student {
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,0.98),
-            rgba(248,250,255,0.98)
+            135deg,
+            #007bff,
+            #00b7ff
         );
-
-    border-radius: 25px;
-
-    padding: 25px;
-
-    box-shadow:
-        0 15px 45px rgba(40, 75, 130, 0.20);
-
-    border: 1px solid rgba(255,255,255,0.9);
 }
-
 
 /* =========================
-   TIÊU ĐỀ TRONG KHUNG
+   MÀU QUẢN TRỊ
 ========================= */
 
-.title {
+.school {
 
-    text-align: center;
-
-    margin-bottom: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            #6636c9,
+            #a64cff
+        );
 }
 
+/* =========================
+   ICON
+========================= */
 
-.title-icon {
+.choice-icon {
 
-    font-size: 42px;
+    font-size: 65px;
 
-    margin-bottom: 3px;
+    margin-bottom: 15px;
 }
 
+/* =========================
+   TIÊU ĐỀ Ô
+========================= */
 
-.title h1 {
+.choice h2 {
+
     margin: 0;
-    padding: 0;
 
-    text-align: center;
+    font-size: 24px;
 
-    font-family: "Trebuchet MS", Arial, sans-serif;
-
-    font-size: 28px;
-
-    font-weight: 700;
-
-    line-height: 1.25;
-
-    letter-spacing: 0;
-
-    color: #3159e8;
+    font-weight: 800;
 }
-
-
-.title p {
-
-    margin: 7px 0 0;
-
-    color: #7a8497;
-
-    font-size: 13px;
-}
-
 
 /* =========================
-   NÚT LIÊN KẾT
+   MÔ TẢ
 ========================= */
 
-.buttons {
+.choice p {
 
-    display: flex;
+    margin: 12px 0 22px;
 
-    flex-direction: column;
+    font-size: 14px;
 
-    gap: 12px;
+    line-height: 1.5;
+
+    opacity: 0.95;
 }
 
+/* =========================
+   NÚT TRUY CẬP
+========================= */
 
-.quick-button {
+.enter {
 
-    position: relative;
+    padding: 11px 27px;
 
-    display: flex;
+    border-radius: 30px;
 
-    align-items: center;
+    background:
+        rgba(255,255,255,0.22);
 
-    min-height: 68px;
-
-    width: 100%;
-
-    padding: 10px 15px;
-
-    border-radius: 14px;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 16px;
+    border:
+        1px solid rgba(255,255,255,0.5);
 
     font-weight: bold;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 6px 14px rgba(0,0,0,0.14);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        background 0.2s ease;
 }
 
-
-.quick-button:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 11px 22px rgba(0,0,0,0.22);
-}
-
-
-/* Hiệu ứng ánh sáng */
-
-.quick-button::after {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: -100%;
-
-    width: 70%;
-
-    height: 100%;
+.choice:hover .enter {
 
     background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.35),
-            transparent
-        );
-
-    transition: left 0.55s ease;
+        rgba(255,255,255,0.35);
 }
-
-
-.quick-button:hover::after {
-
-    left: 130%;
-}
-
-
-/* =========================
-   MÀU NÚT
-========================= */
-
-.button1 {
-    background: linear-gradient(135deg, #008cff, #00b8ff);
-}
-
-.button2 {
-    background: linear-gradient(135deg, #6636c9, #9b45ff);
-}
-
-.button3 {
-    background: linear-gradient(135deg, #009d8b, #00c5ad);
-}
-
-.button4 {
-    background: linear-gradient(135deg, #ed1f63, #ff3f86);
-}
-
-.button5 {
-    background: linear-gradient(135deg, #ff7100, #ff9f00);
-}
-
-.button6 {
-    background: linear-gradient(135deg, #4052b8, #6174d5);
-}
-
-
-/* =========================
-   ICON NÚT
-========================= */
-
-.button-icon {
-
-    width: 45px;
-
-    height: 45px;
-
-    min-width: 45px;
-
-    margin-right: 12px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: rgba(255,255,255,0.22);
-
-    border-radius: 12px;
-
-    font-size: 23px;
-}
-
 
 /* =========================
    FOOTER
@@ -402,692 +240,153 @@ body {
 
 .footer {
 
-    text-align: center;
+    margin-top: 30px;
 
-    margin-top: 20px;
+    font-size: 12px;
 
     color: #8992a3;
-
-    font-size: 11px;
 }
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 1050px) {
-
-    .main-layout {
-
-        grid-template-columns:
-            160px
-            minmax(420px, 600px)
-            160px;
-
-        gap: 12px;
-    }
-
-    .ad-column,
-    .banner {
-
-        width: 160px;
-    }
-}
-
 
 /* =========================
    ĐIỆN THOẠI
 ========================= */
 
-@media (max-width: 800px) {
+@media (max-width: 650px) {
 
-    .page {
-
-        padding: 10px;
+    .container {
+        padding: 25px 15px;
     }
 
-
-    .main-layout {
-
-        display: flex;
-
-        flex-direction: column;
-
-        width: 100%;
-
-        gap: 13px;
+    .logo {
+        font-size: 52px;
     }
 
-
-    /*
-       Banner vẫn hiển thị
-    */
-
-    .ad-column {
-
-        width: 100%;
-
-        display: flex;
-
-        flex-direction: row;
-
-        overflow-x: auto;
-
-        gap: 10px;
-
-        padding: 3px 2px 8px;
+    h1 {
+        font-size: 25px;
     }
 
-
-    .banner {
-
-        min-width: 78%;
-
-        width: 78%;
-
-        flex-shrink: 0;
-    }
-
-
-    .content {
-
-        width: 100%;
-
-        padding: 17px;
-
-        border-radius: 20px;
-    }
-
-
-    /*
-       Banner phải nằm sau nội dung
-    */
-
-    .right-column {
-
-        order: 3;
-    }
-}
-
-
-/* =========================
-   ĐIỆN THOẠI NHỎ
-========================= */
-
-@media (max-width: 480px) {
-
-    .banner {
-
-        min-width: 88%;
-
-        width: 88%;
-    }
-
-
-    .title h1 {
-
-        font-size: 23px;
-    }
-
-
-    .title-icon {
-
-        font-size: 36px;
-    }
-
-
-    .quick-button {
-
-        min-height: 62px;
-
+    .subtitle {
         font-size: 14px;
+        margin-bottom: 25px;
     }
 
+    .choice-container {
 
-    .button-icon {
+        grid-template-columns: 1fr;
 
-        width: 40px;
-
-        height: 40px;
-
-        min-width: 40px;
-
-        font-size: 20px;
-    }
-}
-   /* ==========================
-   POPUP QUẢNG CÁO
-=========================== */
-
-.ad-popup {
-
-    display: none;
-
-    position: fixed;
-
-    z-index: 9999;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.82);
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-}
-
-
-.ad-popup.show {
-
-    display: flex;
-
-}
-
-
-/* Khung hình lớn */
-
-.ad-popup-content {
-
-    position: relative;
-
-    max-width: 95vw;
-
-    max-height: 95vh;
-
-    animation: zoomAd 0.25s ease;
-}
-
-
-.ad-popup-content img {
-
-    display: block;
-
-    max-width: 90vw;
-
-    max-height: 90vh;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 10px 50px rgba(0,0,0,0.5);
-
-}
-
-
-/* Nút đóng */
-
-.close-button {
-
-    position: absolute;
-
-    top: -18px;
-
-    right: -18px;
-
-    z-index: 10;
-
-    width: 42px;
-
-    height: 42px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: white;
-
-    color: #333;
-
-    font-size: 30px;
-
-    line-height: 35px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.3);
-}
-
-
-.close-button:hover {
-
-    background: #eeeeee;
-
-}
-
-
-/* Hiệu ứng phóng */
-
-@keyframes zoomAd {
-
-    from {
-
-        transform: scale(0.75);
-
-        opacity: 0;
-
+        gap: 15px;
     }
 
-    to {
+    .choice {
 
-        transform: scale(1);
+        min-height: 220px;
 
-        opacity: 1;
+        padding: 25px;
+    }
 
+    .choice-icon {
+        font-size: 50px;
+    }
+
+    .choice h2 {
+        font-size: 21px;
     }
 
 }
-/*Hiệu ứng hiển thị lượt truy cập*/
-.visit-counter {
-       margin-bottom: 8px;
-   
-       padding: 8px 15px;
-   
-       display: inline-block;
-   
-       background: rgba(255,255,255,0.75);
-   
-       border-radius: 20px;
-   
-       color: #657089;
-   
-       font-size: 13px;
-   }
-   
-   .visit-counter strong {
-       color: #006cff;
-   
-       font-size: 15px;
-   }
+
 </style>
 </head>
 
-
 <body>
 
+<div class="container">
 
-<div class="page">
+    <div class="logo">
+        🎓
+    </div>
+
+    <h1>
+        CỔNG DỮ LIỆU GIÁO DỤC
+    </h1>
+
+    <div class="subtitle">
+        Vui lòng chọn đối tượng để tiếp tục
+    </div>
 
 
-    <div class="main-layout">
+    <div class="choice-container">
 
 
-        <!-- ==================================
-             BANNER BÊN TRÁI
-        =================================== -->
+        <!-- =========================
+             THÍ SINH
+        ========================== -->
 
-        <aside class="ad-column">
+        <a
+            href="thisinh.html"
+            class="choice student"
+        >
 
-
-            <div class="banner" onclick="openAd('./banner1.jpg')">
-
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-            
-                <img
-                    src="./banner1.jpg"
-                    alt="Quảng cáo 1"
-                >
-            
+            <div class="choice-icon">
+                👨‍🎓
             </div>
 
+            <h2>
+                BẠN LÀ THÍ SINH
+            </h2>
 
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
+            <p>
+                Tra cứu thông tin tốt nghiệp THPT
+                và kết quả Đại học, Cao đẳng.
+            </p>
 
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-
-                <img
-                    src="./banner2.jpg"
-                    alt="Quảng cáo 2"
-                >
-
-            </a>
-
-
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
-
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-
-                <img
-                    src="./banner3.jpg"
-                    alt="Quảng cáo 3"
-                >
-
-            </a>
-
-        </aside>
-
-
-
-        <!-- ==================================
-             NỘI DUNG TRUNG TÂM
-        =================================== -->
-
-        <main class="content">
-
-
-            <div class="title">
-
-                <div class="title-icon">
-                    🚀
-                </div>
-
-                <h1>
-                    TRUY CẬP NHANH
-                </h1>
-
-                <p>
-                    Hệ thống liên kết dữ liệu giáo dục
-                </p>
-
+            <div class="enter">
+                TRUY CẬP →
             </div>
 
-
-            <div class="buttons">
-
-
-                <!-- 1 -->
-
-                <a
-                    class="quick-button button1"
-                    href="https://script.google.com/macros/s/AKfycbx8q_QmVnl7sDVNY_El2fMumXhXs7EAGqD5M-zXTltmbR1vZ8h2p_TOpJDuFP949aKYcw/exec"
-                    target="_blank"
-                >
-
-                    <span class="button-icon">
-                        📝
-                    </span>
-
-                    <span>
-                        Đăng ký đại biểu
-                    </span>
-
-                </a>
+        </a>
 
 
-                <!-- 2 -->
+        <!-- =========================
+             QUẢN TRỊ TRƯỜNG
+        ========================== -->
 
-                <a
-                    class="quick-button button2"
-                    href="https://script.google.com/macros/s/AKfycbzq45ByOe5LfkcKLM6QGy8Wgo5OZGr1upP2HGiEzyHw480GLDUDamADhl7PUH7R3zxq/exec?page=tracuu"
-                    target="_blank"
-                >
+        <a
+            href="quantri.html"
+            class="choice school"
+        >
 
-                    <span class="button-icon">
-                        🎓
-                    </span>
-
-                    <span>
-                        Tra cứu kết quả tốt nghiệp THPT
-                    </span>
-
-                </a>
-
-
-                <!-- 3 -->
-
-                <a
-                    class="quick-button button3"
-                    href="https://script.google.com/macros/s/AKfycbzq45ByOe5LfkcKLM6QGy8Wgo5OZGr1upP2HGiEzyHw480GLDUDamADhl7PUH7R3zxq/exec"
-                    target="_blank"
-                >
-
-                    <span class="button-icon">
-                        📋
-                    </span>
-
-                    <span>
-                        Tải danh sách tốt nghiệp THPT
-                    </span>
-
-                </a>
-
-
-                <!-- 4 -->
-
-                <a
-                    class="quick-button button4"
-                    href="https://script.google.com/macros/s/AKfycbzjdwT5Cjf-Si05w20T7OxUMXpxXlPK6SuUMmMfRIuBXWZXk1TfwK4I5BVQzGz5aGK5Gg/exec"
-                    target="_blank"
-                >
-
-                    <span class="button-icon">
-                        🎓
-                    </span>
-
-                    <span>
-                        Tra cứu kết quả Đại học, Cao đẳng
-                    </span>
-
-                </a>
-
-
-                <!-- 5 -->
-
-                <a
-                    class="quick-button button5"
-                    href="https://script.google.com/macros/s/AKfycbzjdwT5Cjf-Si05w20T7OxUMXpxXlPK6SuUMmMfRIuBXWZXk1TfwK4I5BVQzGz5aGK5Gg/exec?page=login"
-                    target="_blank"
-                >
-
-                    <span class="button-icon">
-                        📋
-                    </span>
-
-                    <span>
-                        Tải danh sách Đại học, Cao đẳng
-                    </span>
-
-                </a>
-
-
-                <!-- 6 -->
-
-                <a
-                    class="quick-button button6"
-                    href="https://padlet.com/dangng1021/phong-quan-ly-chat-luong-va-cong-nghe-thong-tin-so-gd-t-tinh-7in0yy9oh3nqjh13"
-                    target="_blank"
-                >
-
-                    <span class="button-icon">
-                        📚
-                    </span>
-
-                    <span>
-                        Dữ liệu đề thi
-                    </span>
-
-                </a>
-
-
+            <div class="choice-icon">
+                🏫
             </div>
 
+            <h2>
+                QUẢN TRỊ TRƯỜNG
+            </h2>
 
-            <div class="footer">
-            
-                <div class="visit-counter">
-                    👁️ Lượt truy cập:
-                    <strong id="visitCount">...</strong>
-                </div>
-            
-                <div>
-                    © 2026 - Trang truy cập nhanh by Lê Minh Kha
-                </div>
-            
+            <p>
+                Truy cập các chức năng
+                dành cho nhà trường.
+            </p>
+
+            <div class="enter">
+                TRUY CẬP →
             </div>
 
-        </main>
+        </a>
 
 
-
-        <!-- ==================================
-             BANNER BÊN PHẢI
-        =================================== -->
-
-        <aside class="ad-column right-column">
+    </div>
 
 
-            <div class="banner" onclick="openAd('./banner1.jpg')">
+    <div class="footer">
 
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-            
-                <img
-                    src="./banner1.jpg"
-                    alt="Quảng cáo 1"
-                >
-            
-            </div>
-
-
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
-
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-
-                <img
-                    src="./banner5.jpg"
-                    alt="Quảng cáo 5"
-                >
-
-            </a>
-
-
-            <a
-                class="banner"
-                href="#"
-                target="_blank"
-            >
-
-                <span class="ad-label">
-                    QUẢNG CÁO
-                </span>
-
-                <img
-                    src="./banner6.jpg"
-                    alt="Quảng cáo 6"
-                >
-
-            </a>
-
-
-        </aside>
-
+        © 2026 - Trang truy cập dữ liệu giáo dục
+        <br>
+        by Lê Minh Kha
 
     </div>
 
 </div>
 
-<!-- ==========================
-     POPUP HIỂN THỊ QUẢNG CÁO
-=========================== -->
-
-<div id="adPopup" class="ad-popup" onclick="closeAd(event)">
-
-    <div class="ad-popup-content">
-
-        <button
-            class="close-button"
-            onclick="closeAd()"
-        >
-            ×
-        </button>
-
-        <img
-            id="adLargeImage"
-            src=""
-            alt="Quảng cáo"
-        >
-
-    </div>
-
-</div>
-
-
-<script>
-
-function openAd(image) {
-
-    document.getElementById("adLargeImage").src = image;
-
-    document.getElementById("adPopup").classList.add("show");
-
-}
-
-
-function closeAd(event) {
-
-    if (
-        !event ||
-        event.target.id === "adPopup" ||
-        event.target.classList.contains("close-button")
-    ) {
-
-        document
-            .getElementById("adPopup")
-            .classList.remove("show");
-
-    }
-
-}
-
-</script> 
-  <!-- ==========================
-     hiển thị lượt truy cập
-=========================== -->
-   <script>
-
-      const COUNTER_URL =
-          "https://script.google.com/macros/s/AKfycbz181hwlCGnLkHzcHLWL78960QTgrCOYL0vuJpiiziB4C5_p00Z8Cnf4_Ze1Z1jDtcf/exec";
-      
-      
-      fetch(COUNTER_URL)
-          .then(response => response.json())
-          .then(data => {
-      
-              document.getElementById("visitCount")
-                  .textContent = Number(data.visits).toLocaleString("vi-VN");
-      
-          })
-          .catch(error => {
-      
-              document.getElementById("visitCount")
-                  .textContent = "...";
-      
-              console.error(error);
-      
-          });
-      
-      </script>
 </body>
 </html>
