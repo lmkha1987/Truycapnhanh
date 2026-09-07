@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Dành cho thí sinh</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    min-height: 100%;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            #dff5ff,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            #eee5ff,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f5faff,
+            #eef1ff
+        );
+
+    color: #172033;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   KHUNG
+========================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.logo {
+
+    font-size: 60px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   TIÊU ĐỀ
+========================= */
+
+h1 {
+
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color: #3159e8;
+}
+
+.subtitle {
+
+    margin-top: 10px;
+
+    margin-bottom: 30px;
+
+    color: #68738a;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   KHUNG NÚT
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   NÚT
+========================= */
+
+.quick-button {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 78px;
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,0.15);
+
+    transition:
+
+        transform 0.2s ease,
+
+        box-shadow 0.2s ease;
+}
+
+.quick-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.22);
+}
+
+
+/* =========================
+   HIỆU ỨNG ÁNH SÁNG
+========================= */
+
+.quick-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition:
+        left 0.55s ease;
+}
+
+.quick-button:hover::after {
+
+    left: 130%;
+}
+
+
+/* =========================
+   MÀU NÚT
+========================= */
+
+.button1 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #6636c9,
+            #9b45ff
+        );
+}
+
+.button2 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ed1f63,
+            #ff3f86
+        );
+}
+
+
+/* =========================
+   ICON NÚT
+========================= */
+
+.button-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    min-width: 50px;
+
+    margin-right: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,0.22);
+
+    border-radius: 13px;
+
+    font-size: 25px;
+}
+
+
+/* =========================
+   NÚT QUAY LẠI
+========================= */
+
+.back {
+
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 10px 22px;
+
+    border-radius: 25px;
+
+    background: white;
+
+    color: #3159e8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 5px 15px rgba(40,70,130,0.15);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.back:hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    margin-top: 25px;
+
+    color: #8992a3;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   ĐIỆN THOẠI
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding: 25px 15px;
+    }
+
+    .logo {
+
+        font-size: 50px;
+    }
+
+    h1 {
+
+        font-size: 24px;
+    }
+
+    .subtitle {
+
+        font-size: 14px;
+
+        margin-bottom: 22px;
+    }
+
+    .quick-button {
+
+        min-height: 70px;
+
+        font-size: 15px;
+
+        padding: 10px 13px;
+    }
+
+    .button-icon {
+
+        width: 43px;
+
+        height: 43px;
+
+        min-width: 43px;
+
+        margin-right: 12px;
+
+        font-size: 21px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         TIÊU ĐỀ
+    ========================== -->
+
+    <div class="logo">
+        👨‍🎓
+    </div>
+
+    <h1>
+        DÀNH CHO THÍ SINH
+    </h1>
+
+    <div class="subtitle">
+        Vui lòng chọn nội dung cần tra cứu
+    </div>
+
+
+    <!-- =========================
+         2 CHỨC NĂNG
+    ========================== -->
+
+    <div class="buttons">
+
+
+        <!-- TRA CỨU TỐT NGHIỆP -->
+
+        <a
+            class="quick-button button1"
+            href="https://script.google.com/macros/s/AKfycbzq45ByOe5LfkcKLM6QGy8Wgo5OZGr1upP2HGiEzyHw480GLDUDamADhl7PUH7R3zxq/exec?page=tracuu"
+            target="_blank"
+        >
+
+            <span class="button-icon">
+                🎓
+            </span>
+
+            <span>
+                Tra cứu kết quả tốt nghiệp THPT
+            </span>
+
+        </a>
+
+
+        <!-- TRA CỨU ĐẠI HỌC -->
+
+        <a
+            class="quick-button button2"
+            href="https://script.google.com/macros/s/AKfycbzjdwT5Cjf-Si05w20T7OxUMXpxXlPK6SuUMmMfRIuBXWZXk1TfwK4I5BVQzGz5aGK5Gg/exec"
+            target="_blank"
+        >
+
+            <span class="button-icon">
+                🎓
+            </span>
+
+            <span>
+                Tra cứu kết quả Đại học, Cao đẳng
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =========================
+         QUAY LẠI
+    ========================== -->
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Quay lại trang chủ
+    </a>
+
+
+    <div class="footer">
+
+        © 2026 - Trang truy cập dữ liệu giáo dục
+        <br>
+        by Lê Minh Kha
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
