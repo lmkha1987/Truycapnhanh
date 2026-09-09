@@ -508,5 +508,32 @@ document.addEventListener("keydown", function(event) {
 
 </script>
 
+<!-- ==========================
+     hiển thị lượt truy cập
+=========================== -->
+   <script>
+
+      const COUNTER_URL =
+          "https://script.google.com/macros/s/AKfycbz181hwlCGnLkHzcHLWL78960QTgrCOYL0vuJpiiziB4C5_p00Z8Cnf4_Ze1Z1jDtcf/exec";
+      
+      
+      fetch(COUNTER_URL)
+          .then(response => response.json())
+          .then(data => {
+      
+              document.getElementById("visitCount")
+                  .textContent = Number(data.visits).toLocaleString("vi-VN");
+      
+          })
+          .catch(error => {
+      
+              document.getElementById("visitCount")
+                  .textContent = "...";
+      
+              console.error(error);
+      
+          });
+      
+      </script>
 </body>
 </html>
