@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Văn bản khảo thí</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef4ff, #f8fbff);
+    color: #333;
+}
+
+/* ===== BỐ CỤC ===== */
+.page {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 600px) 190px;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* ===== KHU VỰC NỘI DUNG ===== */
+.content {
+    background: rgba(255,255,255,0.96);
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    margin: 0;
+    color: #3159e8;
+    font-size: 28px;
+}
+
+.title p {
+    margin-top: 8px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* ===== CÁC NÚT ===== */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quick-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 65px;
+    padding: 15px 20px;
+
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+
+    transition: 0.25s;
+}
+
+.quick-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+}
+
+.button-icon {
+    font-size: 27px;
+}
+
+/* Màu từng nút */
+.button1 {
+    background: linear-gradient(135deg, #1677ff, #36a1ff);
+}
+
+.button2 {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.button3 {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* ===== BANNER ===== */
+.ads {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ad-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: -5px;
+}
+
+.banner {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    transition: 0.25s;
+}
+
+.banner:hover {
+    transform: scale(1.03);
+}
+
+.banner img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* ===== NÚT VỀ TRANG CHỦ ===== */
+.back-home {
+    display: block;
+    width: fit-content;
+
+    margin: 28px auto 0;
+
+    padding: 9px 22px;
+
+    background: #ffffff;
+    color: #3159e8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 20px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+    transition: 0.2s;
+}
+
+.back-home:hover {
+    background: #f5f7ff;
+    transform: translateY(-1px);
+}
+
+/* ===== POPUP PHÓNG TO BANNER ===== */
+.ad-popup {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.85);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+.ad-popup.show {
+    display: flex;
+}
+
+.ad-popup-content {
+    position: relative;
+
+    max-width: 95vw;
+    max-height: 90vh;
+}
+
+.ad-popup-content img {
+    display: block;
+
+    max-width: 95vw;
+    max-height: 90vh;
+
+    width: auto;
+    height: auto;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.close-button {
+    position: absolute;
+
+    top: -15px;
+    right: -15px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: white;
+    color: #333;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* ===== ĐIỆN THOẠI ===== */
+@media (max-width: 800px) {
+
+    .page {
+        padding: 15px 10px;
+    }
+
+    .layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        width: 100%;
+        order: 1;
+        padding: 25px 18px;
+    }
+
+    .ads.left {
+        order: 2;
+    }
+
+    .ads.right {
+        order: 3;
+    }
+
+    .ads {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ad-title {
+        grid-column: 1 / -1;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .title h1 {
+        font-size: 24px;
+    }
+
+    .quick-button {
+        font-size: 16px;
+        min-height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .ads {
+        grid-template-columns: 1fr;
+    }
+
+    .banner {
+        max-width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="layout">
+
+    <!-- ================= BANNER TRÁI ================= -->
+    <div class="ads left">
+
+        <div class="ad-title">
+            QUẢNG CÁO
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner1.jpg')">
+            <img src="./banner1.jpg" alt="Quảng cáo">
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner2.jpg')">
+            <img src="./banner2.jpg" alt="Quảng cáo">
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner3.jpg')">
+            <img src="./banner3.jpg" alt="Quảng cáo">
+        </div>
+
+    </div>
+
+
+    <!-- ================= NỘI DUNG ================= -->
+    <main class="content">
+
+        <div class="title">
+            <h1>📚 VĂN BẢN KHẢO THÍ</h1>
+            <p>
+                Tra cứu văn bản theo từng lĩnh vực
+            </p>
+        </div>
+
+
+        <div class="buttons">
+
+            <!-- THAY LINK DRIVE TẠI ĐÂY -->
+            <a class="quick-button button1"
+               href="LINK_THU_MUC_DRIVE_TN_THPT"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span class="button-icon">📝</span>
+                <span>Văn bản thi TN THPT</span>
+
+            </a>
+
+
+            <!-- THAY LINK DRIVE TẠI ĐÂY -->
+            <a class="quick-button button2"
+               href="LINK_THU_MUC_DRIVE_HSG"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span class="button-icon">🏆</span>
+                <span>Văn bản thi HSG</span>
+
+            </a>
+
+
+            <!-- THAY LINK DRIVE TẠI ĐÂY -->
+            <a class="quick-button button3"
+               href="LINK_THU_MUC_DRIVE_KIEM_DINH"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span class="button-icon">📋</span>
+                <span>Văn bản kiểm định</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- VỀ TRANG CHỦ -->
+        <a href="./index.html" class="back-home">
+            ← Quay lại trang chủ
+        </a>
+
+    </main>
+
+
+    <!-- ================= BANNER PHẢI ================= -->
+    <div class="ads right">
+
+        <div class="ad-title">
+            QUẢNG CÁO
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner1.jpg')">
+            <img src="./banner1.jpg" alt="Quảng cáo">
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner5.jpg')">
+            <img src="./banner5.jpg" alt="Quảng cáo">
+        </div>
+
+        <div class="banner"
+             onclick="openAd('./banner6.jpg')">
+            <img src="./banner6.jpg" alt="Quảng cáo">
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- ================= POPUP ================= -->
+<div id="adPopup"
+     class="ad-popup"
+     onclick="closeAd(event)">
+
+    <div class="ad-popup-content">
+
+        <span class="close-button"
+              onclick="closeAd(event)">
+            ×
+        </span>
+
+        <img id="adLargeImage"
+             src=""
+             alt="Quảng cáo">
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* MỞ BANNER */
+function openAd(image) {
+
+    document.getElementById("adLargeImage").src = image;
+
+    document.getElementById("adPopup").classList.add("show");
+}
+
+
+/* ĐÓNG BANNER */
+function closeAd(event) {
+
+    if (
+        !event ||
+        event.target.id === "adPopup" ||
+        event.target.classList.contains("close-button")
+    ) {
+
+        document
+            .getElementById("adPopup")
+            .classList.remove("show");
+    }
+}
+
+
+/* Nhấn ESC để đóng */
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        document
+            .getElementById("adPopup")
+            .classList.remove("show");
+    }
+
+});
+
+</script>
+
+</body>
+</html>
